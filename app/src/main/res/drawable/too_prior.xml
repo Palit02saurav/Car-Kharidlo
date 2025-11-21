@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background image layer -->
+    <item>
+        <bitmap
+            android:src="@drawable/acc_back"
+            android:gravity="center" />
+    </item>
+
+    <!-- Overlay with rounded corners -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#66FFFFFF"/> <!-- Semi-transparent white overlay -->
+            <corners android:radius="15dp"/>
+        </shape>
+    </item>
+</layer-list>

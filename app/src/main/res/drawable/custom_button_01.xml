@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background image layer -->
+    <item>
+        <bitmap
+            android:src="@drawable/brand_new"
+            android:gravity="" />
+    </item>
+
+    <!-- Rounded shape overlay to clip corners -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="25dp" />
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+</layer-list>

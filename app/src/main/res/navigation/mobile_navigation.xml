@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.carkharidlo.ui.Home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.carkharidlo.ui.Profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/latestCarzFragment"
+        android:name="com.example.carkharidlo.ui.Latest_Carz.LatestCarzFragment"
+        android:label="Latest Car's"
+        tools:layout="@layout/fragment_latest_carz" />
+    <fragment
+        android:id="@+id/refurbishedCarzFragment"
+        android:name="com.example.carkharidlo.ui.Refurbished_Carz.RefurbishedCarzFragment"
+        android:label="Recommended Car's"
+        tools:layout="@layout/fragment_recommended_carz" />
+    <fragment
+        android:id="@+id/recommendedFragment2"
+        android:name="com.example.carkharidlo.ui.Recommended.RecommendedFragment"
+        android:label="Recommended Car's"
+        tools:layout="@layout/fragment_recommended_carz" />
+    <fragment
+        android:id="@+id/cartFragments"
+        android:name="com.example.carkharidlo.ui.Cart.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
+
+
+</navigation>

@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/recommendedFragment2"
+            android:icon="@drawable/recommended_30"
+            android:title="Recommended Car's" />
+
+        <item
+            android:id="@+id/latestCarzFragment"
+            android:icon="@drawable/latest_30"
+            android:title="Latest Car's" />
+
+        <item
+            android:id="@+id/refurbishedCarzFragment"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Refurbished Car's" />
+
+        <item
+            android:id="@+id/cartFragments"
+            android:icon="@drawable/cart_30"
+            android:title="Cart" />
+
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/profile_30"
+            android:title="Profile" />
+    </group>
+</menu>
