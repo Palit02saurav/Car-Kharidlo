@@ -1,404 +1,391 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Home.HomeFragment"
-    android:background="#FFFFFF">
+    android:background="@color/brand_dark"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:context=".ui.Home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
 
-        <!-- Search Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car Kharidlo"
+                    android:textColor="@color/brand_primary"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drive your dream machine"
+                    android:textColor="#94A3B8"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/premium_circle_bg"
+                android:padding="12dp"
+                android:src="@android:drawable/ic_dialog_info" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:hint="Search cars..."
-            android:padding="10dp"
-            android:background="@drawable/searchbar"
+            android:layout_height="58dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/premium_search_bg"
             android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="8dp"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:drawablePadding="10dp"
+            android:hint="Search cars..."
+            android:paddingStart="18dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#94A3B8"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
 
-        <!-- Top Horizontal Scroll of Images -->
-        <RelativeLayout
-            android:id="@+id/firstrelative"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <HorizontalScrollView
-                android:id="@+id/horizontal_scroll_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/horizontal_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="280dp"
-                    android:orientation="horizontal"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp">
-
-                    <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/empty_rounded"
-                        android:src="@drawable/check_01"
-                        android:scaleType="fitXY"
-                        android:clipToOutline="true"
-                        android:layout_margin="10dp" />
-
-                    <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/empty_rounded"
-                        android:src="@drawable/image_02"
-                        android:scaleType="fitXY"
-                        android:clipToOutline="true"
-                        android:layout_margin="10dp" />
-
-                    <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/empty_rounded"
-                        android:src="@drawable/image_002"
-                        android:scaleType="fitXY"
-                        android:clipToOutline="true"
-                        android:layout_margin="10dp" />
-
-                    <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/empty_rounded"
-                        android:src="@drawable/image_03"
-                        android:scaleType="fitXY"
-                        android:clipToOutline="true"
-                        android:layout_margin="10dp" />
-                </LinearLayout>
-            </HorizontalScrollView>
-        </RelativeLayout>
-
-        <!-- 2x2 Grid Section -->
-        <LinearLayout
-            android:id="@+id/second_narration"
-            android:layout_marginTop="15dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchResultsRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:nestedScrollingEnabled="false"
+            android:visibility="gone" />
 
-            <!-- Row 1 -->
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginTop="18dp"
+            android:scrollbars="none">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/premium_banner_bg"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/check_01" />
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/premium_banner_bg"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_02" />
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/premium_banner_bg"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_002" />
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/premium_banner_bg"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_03" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:text="Browse Categories"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingTop="12dp"
+            android:paddingBottom="6dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/but01"
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
                     android:layout_margin="8dp"
+                    app:cardBackgroundColor="#111827"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="#6A5ACD">
+                    app:cardElevation="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
                             android:src="@drawable/pic1" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:text="Brand New"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:layout_marginTop="3dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Buy new cars"
-                            android:textColor="@android:color/white"
-                            android:textSize="13sp" />
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/but02"
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_weight="1"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
                     android:layout_margin="8dp"
+                    app:cardBackgroundColor="#111827"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="#FF9800">
+                    app:cardElevation="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
                             android:src="@drawable/pick2" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:text="Refurbished"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:layout_marginTop="3dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pre-owned cars"
-                            android:textColor="@android:color/white"
-                            android:textSize="13sp" />
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <!-- Row 2 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/but03"
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_weight="1"
+                    android:id="@+id/butLatest"
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
                     android:layout_margin="8dp"
+                    app:cardBackgroundColor="#111827"
                     app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="#03A9F4">
+                    app:cardElevation="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:src="@drawable/pic3" />
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/mustang" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rent"
+                            android:layout_marginTop="10dp"
+                            android:text="Latest"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:layout_marginTop="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Hire cars easily"
-                            android:textColor="@android:color/white"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/but04"
-                    android:layout_width="0dp"
-                    android:layout_height="160dp"
-                    android:layout_weight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="#8BC34A">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:src="@drawable/bike_pick4" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Bikes"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:textSize="18sp"
-                            android:layout_marginTop="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Explore bikes"
-                            android:textColor="@android:color/white"
-                            android:textSize="13sp" />
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
-        </LinearLayout>
+        </HorizontalScrollView>
 
-        <!-- Divider Bar -->
-        <View
-            android:id="@+id/bar"
-            android:layout_marginTop="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:background="#B3A8A8" />
-
-        <!-- Most Searched Cars Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@android:color/white">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:text="Featured Car"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="The most searched cars"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="#000000"
-                android:layout_marginBottom="10dp" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/featuredCard"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_margin="20dp"
+            app:cardBackgroundColor="#111827"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="10dp">
 
-            <!-- Category Row (All Red Text) -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:padding="14dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SUV"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#FF0000"
-                    android:layout_marginEnd="18dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hatchback"
-                    android:textSize="16sp"
-                    android:textColor="#FF0000"
-                    android:layout_marginEnd="18dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sedan"
-                    android:textSize="16sp"
-                    android:textColor="#FF0000"
-                    android:layout_marginEnd="18dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MUV"
-                    android:textSize="16sp"
-                    android:textColor="#FF0000"
-                    android:layout_marginEnd="18dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Luxury"
-                    android:textSize="16sp"
-                    android:textColor="#FF0000" />
-            </LinearLayout>
-
-            <!-- Featured Car Card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="6dp">
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hyundai_venue" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:src="@drawable/hyundai_venue"
-                        android:scaleType="centerCrop"
-                        android:clipToOutline="true" />
+                    android:paddingStart="14dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hyundai Venue"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="#000000"
-                        android:layout_marginTop="8dp" />
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹7.90 - 15.69 Lakh*"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:textColor="#007F00"
-                        android:layout_marginTop="3dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="View November Offers"
-                        android:textColor="#FF0000"
-                        android:textSize="14sp"
-                        android:layout_marginTop="2dp" />
+                        android:layout_marginTop="8dp"
+                        android:text="₹7.90 - 15.69 Lakh"
+                        android:textColor="@color/brand_primary"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Top Rated Cars"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Popular SUV Cars →"
-                android:textStyle="bold"
-                android:textColor="#FF0000"
-                android:textSize="16sp"
-                android:layout_marginTop="6dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/topCar1"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#111827"
+                    app:cardCornerRadius="24dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/hyundai_creta" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:text="Hyundai Creta"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/topCar2"
+                    android:layout_width="220dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#111827"
+                    app:cardCornerRadius="24dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/volky" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:text="Volkswagen Virtus"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

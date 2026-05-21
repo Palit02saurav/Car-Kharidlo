@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CarDetails.Tata_Nexon">
+    android:background="#F5F7FB">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#FFFFFF">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingBottom="120dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
-                app:cardCornerRadius="18dp"
-                app:cardUseCompatPadding="true"
-                android:elevation="6dp">
+                android:layout_height="360dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -36,297 +31,342 @@
                         android:id="@+id/carImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/tata_nex" />
+                        android:src="@drawable/tata_nex"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"
+                        android:background="#F3F4F6" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/hero_gradient" />
 
                     <ImageButton
                         android:id="@+id/btn_back"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="12dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="18dp"
                         android:background="@drawable/circle_white_bg"
-                        android:padding="8dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:src="@drawable/ic_menu_back" />
+                        android:padding="10dp"
+                        android:src="@drawable/ic_menu_back"
+                        android:layout_alignParentStart="true" />
 
                     <ImageButton
                         android:id="@+id/btn_favorite"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="12dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="18dp"
                         android:background="@drawable/circle_white_bg"
-                        android:padding="8dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentTop="true"
-                        android:src="@drawable/ic_heart" />
+                        android:padding="10dp"
+                        android:src="@drawable/ic_heart"
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:id="@+id/launchedDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_margin="12dp"
-                        android:paddingHorizontal="12dp"
-                        android:paddingVertical="6dp"
                         android:text="Launched On: Sept 14, 2023"
-                        android:textColor="#000"
+                        android:textColor="#111111"
+                        android:textStyle="bold"
                         android:textSize="13sp"
-                        android:background="@drawable/rounded_white_bg" />
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="8dp"
+                        android:background="@drawable/rounded_white_bg"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="18dp" />
+
                 </RelativeLayout>
-
             </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/carName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="Tata Nexon"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/carPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="₹8.10 - 15.50 Lakh*"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#00A651" />
-
-            <TextView
-                android:id="@+id/offers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="View November Offers"
-                android:textSize="16sp"
-                android:textColor="#FF7A00" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="18dp"
-                android:weightSum="3">
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/carName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tata Nexon"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="#111111" />
+
+                    <TextView
+                        android:id="@+id/carPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹8.10 - 15.50 Lakh*"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#16A34A"
+                        android:layout_marginTop="6dp" />
+
+                    <TextView
+                        android:id="@+id/offers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View November Offers"
+                        android:textSize="16sp"
+                        android:textColor="#F97316"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estimated EMI"
+                            android:textSize="14sp"
+                            android:textColor="#777777" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹14,999/mo"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#111111" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:padding="20dp">
 
                 <Button
                     android:id="@+id/btn_call_dealer"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
-                    android:text="Call"
-                    android:textSize="16sp"
+                    android:text="CALL"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#0B3B75" />
 
                 <Button
                     android:id="@+id/btn_whatsapp"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
-                    android:text="WhatsApp"
-                    android:textSize="16sp"
+                    android:text="WHATSAPP"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#25D366" />
 
                 <Button
                     android:id="@+id/btn_add_cart"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
-                    android:text="Add to Cart"
-                    android:textSize="16sp"
+                    android:text="ADD TO CART"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#F47B20" />
+                    android:backgroundTint="#F97316" />
             </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="95dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fuel"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Petrol/Diesel"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="95dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gear"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Manual/Auto"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="95dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mileage"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="17-24 kmpl"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="110dp"
+                        android:layout_height="95dp"
+                        app:cardCornerRadius="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Seats"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="5 Seater"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                app:cardCornerRadius="18dp"
-                android:elevation="5dp">
+                android:layout_margin="20dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Specifications"
-                        android:textSize="24sp"
+                        android:textSize="26sp"
                         android:textStyle="bold"
-                        android:textColor="#000" />
+                        android:textColor="#111111"/>
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="12dp">
+                        android:text="Fuel Type                    Petrol / Diesel"
+                        android:textSize="16sp"
+                        android:paddingTop="16dp"/>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Transmission              Manual / Automatic"
+                        android:textSize="16sp"
+                        android:paddingTop="12dp"/>
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Fuel Type"
-                                android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Engine                        1199 / 1497 cc"
+                        android:textSize="16sp"
+                        android:paddingTop="12dp"/>
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Petrol / Diesel"
-                                android:textSize="16sp"
-                                android:textColor="#000" />
-                        </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mileage                      17 - 24 kmpl"
+                        android:textSize="16sp"
+                        android:paddingTop="12dp"/>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Boot Space                  382 Litres"
+                        android:textSize="16sp"
+                        android:paddingTop="12dp"/>
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Transmission"
-                                android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Airbags                      6"
+                        android:textSize="16sp"
+                        android:paddingTop="12dp"/>
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Manual / Automatic"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Engine"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="1199 cc / 1497 cc"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Mileage (ARAI)"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="17 - 24 kmpl"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Seating Capacity"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="5"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Boot Space"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="382 Litres"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:paddingTop="6dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Airbags"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="6"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                    </LinearLayout>
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

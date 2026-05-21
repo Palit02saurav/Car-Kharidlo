@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,11 +14,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CarKharidlo">
+        android:theme="@style/Theme.CarKharidlo"
+        android:usesCleartextTraffic="true">
 
-        <!-- ========================= -->
-        <!--  LISTINGS ACTIVITIES      -->
-        <!-- ========================= -->
         <activity
             android:name=".ui.listings.NewListing"
             android:exported="false" />
@@ -31,33 +29,66 @@
             android:name=".ui.Profile.MyListings"
             android:exported="false" />
 
-        <!-- ========================= -->
-        <!-- CHECKOUT                  -->
-        <!-- ========================= -->
         <activity
             android:name=".ui.checkout.Checkout"
             android:exported="false" />
 
-        <!-- ========================= -->
-        <!-- CAR DETAILS ACTIVITIES    -->
-        <!-- ========================= -->
-        <activity android:name=".ui.CarDetails.Toyota_Fortuner" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Kia_Sonnet" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Maruti_Baleno" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Tata_Nexon" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Hyundai_I20" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Maruti_Swift" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Honda_City" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Skoda_Kushaq" android:exported="false" />
-        <activity android:name=".ui.CarDetails.MG_Hector" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Tata_Harrier" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Mahindra_XUV" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Volkswagon_virtus" android:exported="false" />
-        <activity android:name=".ui.CarDetails.Hyund_Creta" android:exported="false" />
+        <activity
+            android:name=".ui.CarDetails.Toyota_Fortuner"
+            android:exported="false" />
 
-        <!-- ========================= -->
-        <!-- AUTH SCREENS              -->
-        <!-- ========================= -->
+        <activity
+            android:name=".ui.CarDetails.Kia_Sonnet"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Maruti_Baleno"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Tata_Nexon"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Hyundai_I20"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Maruti_Swift"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Honda_City"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Skoda_Kushaq"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.MG_Hector"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Tata_Harrier"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Mahindra_XUV"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Volkswagon_virtus"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.Hyund_Creta"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CarDetails.UserCarDetailsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.Sign_In_Activity"
             android:exported="true"
@@ -80,9 +111,6 @@
             android:exported="true"
             android:theme="@style/Theme.CarKharidlo.NoActionBar" />
 
-        <!-- ========================= -->
-        <!-- MAIN ACTIVITY             -->
-        <!-- ========================= -->
         <activity
             android:name=".MainActivity"
             android:exported="false"

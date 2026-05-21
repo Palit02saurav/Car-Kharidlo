@@ -5,38 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@color/brand_dark"
     tools:context=".ui.Recommended.RecommendedFragment">
 
-    <EditText
-        android:id="@+id/search_recommended"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="12dp"
-        android:hint="Search recommended cars..."
-        android:paddingStart="15dp"
-        android:background="@drawable/rounded"
-        android:drawableStart="@android:drawable/ic_menu_search"
-        android:drawablePadding="10dp"
-        android:textSize="16sp" />
+        android:layout_height="230dp"
+        android:background="@drawable/recommended_hero_gradient">
 
-    <TextView
-        android:id="@+id/subtitle_recommended"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Top picks tailored for you"
-        android:textSize="16sp"
-        android:textColor="#444444"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recommended Cars"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/subtitleRecommended"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luxury picks tailored for you"
+                android:textColor="#D4AF37"
+                android:textSize="15sp"
+                android:layout_marginTop="6dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginTop="28dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <EditText
+                    android:id="@+id/searchRecommended"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/glass_search_bg"
+                    android:hint="Search premium recommendations..."
+                    android:textColor="@color/white"
+                    android:textColorHint="#B0FFFFFF"
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:drawablePadding="12dp"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    android:textCursorDrawable="@null" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </FrameLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,432 +76,530 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- 1 -->
+            <!-- CARD TEMPLATE -->
+
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_1"
+                android:id="@+id/cardRecommended1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/hyundai_creta" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/hyundai_creta"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Hyundai Creta 2022"
+                            android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 10.8 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 12,000 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Petrol | Automatic"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 2 -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_2"
+                android:id="@+id/cardRecommended2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/volky" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/volky"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Volkswagen Virtus 2023"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 14.2 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 8,000 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Petrol | Manual"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 3 -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_3"
+                android:id="@+id/cardRecommended3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/mahi" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/mahi"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Mahindra XUV700 2023"
+                            android:text="Mahindra XUV700"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 17.8 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 5,000 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Diesel | Automatic"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- 4 -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_4"
+                android:id="@+id/cardRecommended4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/harrier" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/harrier"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Tata Harrier 2022"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 15.5 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 18,000 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Diesel | Automatic"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- 5 -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_5"
+                android:id="@+id/cardRecommended5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/seltos" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/seltos"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Kia Seltos 2023"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 12.9 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 9,000 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Petrol | Manual"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- 6 -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_6"
+                android:id="@+id/cardRecommended6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="18dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/hector" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/hector"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="MG Hector 2023"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 16.3 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 6,500 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Diesel | Automatic"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- 7 -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_recommended_7"
+                android:id="@+id/cardRecommended7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="6dp"
-                app:cardCornerRadius="14dp">
+                android:layout_height="170dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@color/premium_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="14dp">
 
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/skoda" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="145dp"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="#F7F7F7">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/skoda"
+                            android:scaleType="fitCenter" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="10dp">
+                        android:paddingStart="14dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Skoda Kushaq 2023"
+                            android:textSize="19sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
+                            android:textColor="#111827"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="₹ 13.8 Lakh"
-                            android:textColor="#007F00"
-                            android:textSize="16sp"
-                            android:layout_marginTop="3dp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#16A34A"
+                            android:layout_marginTop="6dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Driven: 7,000 km"
-                            android:textColor="#555555"
+                            android:textColor="#6B7280"
                             android:textSize="14sp"
-                            android:layout_marginTop="2dp" />
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Petrol | Automatic"
-                            android:textColor="#555555"
-                            android:textSize="14sp" />
+                            android:background="@drawable/gold_chip_bg"
+                            android:textColor="#8A6500"
+                            android:textSize="12sp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="6dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

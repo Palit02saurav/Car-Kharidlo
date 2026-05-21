@@ -9,9 +9,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carkharidlo.R
-import com.example.carkharidlo.data.CartItem
 import com.example.carkharidlo.data.CartRepository
-
 
 class Tata_Harrier : AppCompatActivity() {
 
@@ -46,29 +44,48 @@ class Tata_Harrier : AppCompatActivity() {
             openWhatsappChat()
         }
 
-        CartRepository.addToCart(
-            CartItem(
-                id = "honda_city_2023",
-                name = "Honda City 2023",
-                price = 1250000L,
-                quantity = 1,
-                imageRes = R.drawable.harrier
+        btnAddCart.setOnClickListener {
+            CartRepository.addToCart(
+                context = this,
+                carId = 110,
+                carName = "Tata Harrier",
+                carPrice = "2650000",
+                carImage = "harrier",
+                onSuccess = {
+                    Toast.makeText(
+                        this,
+                        "Car added to cart ✔",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                onError = {
+                    Toast.makeText(
+                        this,
+                        "Failed to add cart",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             )
-        )
-        Toast.makeText(this, "Car added to cart ✔", Toast.LENGTH_SHORT).show()
-
+        }
     }
 
     private fun openWhatsappChat() {
         val message = "Hello! I want more details about Tata Harrier."
 
         try {
-            val uri = Uri.parse("https://wa.me/$whatsappNumber/?text=${Uri.encode(message)}")
+            val uri = Uri.parse(
+                "https://wa.me/$whatsappNumber/?text=${Uri.encode(message)}"
+            )
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.whatsapp")
             startActivity(intent)
+
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, "WhatsApp is not installed on your phone", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                this,
+                "WhatsApp is not installed on your phone",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 }

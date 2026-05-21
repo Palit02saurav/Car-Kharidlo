@@ -10,6 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.carkharidlo.MainActivity
 import com.example.carkharidlo.R
+import com.example.carkharidlo.model.LoginRequest
+import com.example.carkharidlo.model.LoginResponse
+import com.example.carkharidlo.network.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Sign_In_Activity : AppCompatActivity() {
 
@@ -29,65 +35,86 @@ class Sign_In_Activity : AppCompatActivity() {
 
         sharedPrefs = getSharedPreferences("UserData", MODE_PRIVATE)
 
-        // Already logged in?
         val isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false)
+
         if (isLoggedIn) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 
-        // Normal Sign In
         signInBtn.setOnClickListener {
+
             val email = emailBox.text.toString().trim()
             val password = passwordBox.text.toString().trim()
 
-            val savedEmail = sharedPrefs.getString("email", null)
-            val savedPassword = sharedPrefs.getString("password", null)
-
-            when {
-                email.isEmpty() || password.isEmpty() ->
-                    Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
-                email != savedEmail || password != savedPassword ->
-                    Toast.makeText(this, "Wrong credentials", Toast.LENGTH_SHORT).show()
-                else -> {
-                    sharedPrefs.edit().putBoolean("isLoggedIn", true).apply()
-                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            val loginRequest = LoginRequest(email, password)
+
+            RetrofitClient.apiService.loginUser(loginRequest)
+                .enqueue(object : Callback<LoginResponse> {
+
+                    override fun onResponse(
+                        call: Call<LoginResponse>,
+                        response: Response<LoginResponse>
+                    ) {
+
+                        if (response.isSuccessful && response.body() != null) {
+
+                            val user = response.body()!!
+
+                            sharedPrefs.edit()
+                                .putBoolean("isLoggedIn", true)
+                                .putString("email", user.email)
+                                .putString("name", user.name)
+                                .putInt("userId", user.userId)
+                                .apply()
+
+                            Toast.makeText(
+                                this@Sign_In_Activity,
+                                user.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            startActivity(Intent(this@Sign_In_Activity, MainActivity::class.java))
+                            finish()
+
+                        } else {
+                            Toast.makeText(
+                                this@Sign_In_Activity,
+                                "Invalid credentials",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        Toast.makeText(
+                            this@Sign_In_Activity,
+                            "Connection Failed: ${t.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                })
         }
 
-        // Sign Up Page navigation
         signUpText.setOnClickListener {
             startActivity(Intent(this, Sign_Up_Activity::class.java))
         }
 
-        // Forgot Password redirects to Sign Up
         forgotPassword.setOnClickListener {
-            startActivity(Intent(this, Sign_Up_Activity::class.java))
+            Toast.makeText(this, "Forgot Password Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
-        // Facebook / Google Auto Sign In
-        val socialLogin = { platform: String ->
-            val defaultEmail = "$platform@example.com"
-            val defaultName = "$platform User"
-            val defaultPassword = "0000"
-
-            val editor = sharedPrefs.edit()
-            editor.putString("email", defaultEmail)
-            editor.putString("name", defaultName)
-            editor.putString("password", defaultPassword)
-            editor.putBoolean("isLoggedIn", true)
-            editor.apply()
-
-            Toast.makeText(this, "Auto signed in with $platform\nPassword is 0000 😎", Toast.LENGTH_LONG).show()
-
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+        facebookBtn.setOnClickListener {
+            Toast.makeText(this, "Facebook Login Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
-        facebookBtn.setOnClickListener { socialLogin("Facebook") }
-        googleBtn.setOnClickListener { socialLogin("Google") }
+        googleBtn.setOnClickListener {
+            Toast.makeText(this, "Google Login Coming Soon", Toast.LENGTH_SHORT).show()
+        }
     }
 }

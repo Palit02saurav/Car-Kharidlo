@@ -26,7 +26,7 @@ class PersonalInfoActivity : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1001
     private var selectedImageUri: Uri? = null
-    private var savedImagePath: String? = null   // <— For internal storage file path
+    private var savedImagePath: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +39,11 @@ class PersonalInfoActivity : AppCompatActivity() {
 
         sharedPrefs = getSharedPreferences("UserData", Context.MODE_PRIVATE)
 
-        // load old data
         nameEditText.setText(sharedPrefs.getString("name", "Guest User"))
         emailEditText.setText(sharedPrefs.getString("email", "guest@example.com"))
 
-        // load saved permanent image
         savedImagePath = sharedPrefs.getString("profileImagePath", null)
+
         if (!savedImagePath.isNullOrEmpty()) {
             val file = File(savedImagePath!!)
             if (file.exists()) {
@@ -52,8 +51,13 @@ class PersonalInfoActivity : AppCompatActivity() {
             }
         }
 
-        profileImage.setOnClickListener { openGallery() }
-        saveButton.setOnClickListener { saveUserData() }
+        profileImage.setOnClickListener {
+            openGallery()
+        }
+
+        saveButton.setOnClickListener {
+            saveUserData()
+        }
     }
 
     private fun openGallery() {
@@ -83,13 +87,13 @@ class PersonalInfoActivity : AppCompatActivity() {
         editor.putString("name", name)
         editor.putString("email", email)
 
-        // Save the selected image permanently
         selectedImageUri?.let {
-            val path = ImageUtils.saveImageToInternalStorage(this, it)
+            val path = ImageUtils.saveProfileImage(this, it)
             editor.putString("profileImagePath", path)
         }
 
-        editor.apply()
+        editor.commit()
+
         Toast.makeText(this, "Profile updated!", Toast.LENGTH_SHORT).show()
         finish()
     }

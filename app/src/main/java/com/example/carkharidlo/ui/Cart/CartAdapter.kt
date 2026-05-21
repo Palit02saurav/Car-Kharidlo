@@ -1,13 +1,17 @@
 package com.example.carkharidlo.ui.Cart
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.carkharidlo.R
 import com.example.carkharidlo.data.CartItem
-import com.example.carkharidlo.data.CartRepository
 import com.example.carkharidlo.databinding.ItemCartBinding
+import java.io.File
 
-class CartAdapter : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+class CartAdapter(
+    private val onRemove: (Int) -> Unit
+) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     private var items: MutableList<CartItem> = mutableListOf()
 
@@ -31,27 +35,33 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val item = items[position]
 
-        holder.binding.imgItems.setImageResource(item.imageRes)
-        holder.binding.tvNames.text = item.name
-        holder.binding.tvPrices.text = "₹ ${item.price}"
+        val file = File(item.car_image)
+
+        if (file.exists()) {
+            holder.binding.imgItems.setImageURI(Uri.fromFile(file))
+        } else {
+            val imageRes = holder.itemView.context.resources.getIdentifier(
+                item.car_image,
+                "drawable",
+                holder.itemView.context.packageName
+            )
+
+            if (imageRes != 0) {
+                holder.binding.imgItems.setImageResource(imageRes)
+            } else {
+                holder.binding.imgItems.setImageResource(R.drawable.honda_city)
+            }
+        }
+
+        holder.binding.tvNames.text = item.car_name
+        holder.binding.tvPrices.text = item.car_price
         holder.binding.tvQtys.text = item.quantity.toString()
 
-        // Increase Qty
-        holder.binding.btnIncreasess.setOnClickListener {
-            CartRepository.increaseQty(item.id)
-            notifyItemChanged(position)
-        }
+        holder.binding.btnIncreasess.isEnabled = false
+        holder.binding.btnDecreases.isEnabled = false
 
-        // Decrease Qty
-        holder.binding.btnDecreases.setOnClickListener {
-            CartRepository.decreaseQty(item.id)
-            notifyDataSetChanged() // item may be removed
-        }
-
-        // Remove Item
         holder.binding.btnRemoves.setOnClickListener {
-            CartRepository.removeFromCart(item.id)
-            notifyDataSetChanged()
+            onRemove(item.id)
         }
     }
 

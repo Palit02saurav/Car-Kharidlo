@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.latestCarzFragment,
                 R.id.refurbishedCarzFragment,
                 R.id.recommendedFragment2,
-                R.id.cartFragments
+                R.id.cartFragments,
+                R.id.sellCarFragment
             ),
             drawerLayout
         )
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        updateDrawerHeader()
+    }
+
+    override fun onStart() {
+        super.onStart()
         updateDrawerHeader()
     }
 
@@ -70,12 +76,17 @@ class MainActivity : AppCompatActivity() {
         val headerName = headerView.findViewById<TextView>(R.id.nav_profile_name)
         val headerEmail = headerView.findViewById<TextView>(R.id.nav_profile_email)
 
+        headerImage.clipToOutline = true
+        headerImage.setImageDrawable(null)
+
         headerName.text = name
         headerEmail.text = email
 
         if (!imagePath.isNullOrEmpty()) {
             val file = File(imagePath)
+
             if (file.exists()) {
+                headerImage.setImageURI(null)
                 headerImage.setImageURI(Uri.fromFile(file))
             } else {
                 headerImage.setImageResource(R.drawable.avaar)

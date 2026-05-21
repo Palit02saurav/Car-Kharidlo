@@ -1,5 +1,6 @@
 package com.example.carkharidlo.ui.Cart
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.carkharidlo.data.CartItem
@@ -9,24 +10,16 @@ class CartViewModel : ViewModel() {
 
     val cartItems: LiveData<MutableList<CartItem>> = CartRepository.items
 
-    fun addToCart(item: CartItem) {
-        CartRepository.addToCart(item)
+    fun fetchCart(context: Context) {
+        CartRepository.fetchCart(context)
     }
 
-    fun increaseQuantity(id: String) {
-        CartRepository.increaseQty(id)
+    fun removeFromCart(context: Context, id: Int) {
+        CartRepository.removeFromCart(context, id)
     }
 
-    fun decreaseQuantity(id: String) {
-        CartRepository.decreaseQty(id)
-    }
-
-    fun removeFromCart(id: String) {
-        CartRepository.removeFromCart(id)
-    }
-
-    fun clearCart() {
-        CartRepository.clearCart()
+    fun clearCart(context: Context) {
+        CartRepository.clearCart(context)
     }
 
     fun totalPrice(): Long {

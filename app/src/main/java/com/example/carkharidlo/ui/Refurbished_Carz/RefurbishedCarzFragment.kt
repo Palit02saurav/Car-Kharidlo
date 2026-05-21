@@ -1,20 +1,25 @@
 package com.example.carkharidlo.ui.Refurbished_Carz
 
-import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
-import com.example.carkharidlo.data.CartRepository
-import com.example.carkharidlo.data.CartItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.carkharidlo.database.CarDatabaseHelper
 import com.example.carkharidlo.databinding.FragmentRefurbishedCarzBinding
-import com.example.carkharidlo.ui.CarDetails.*
+import com.example.carkharidlo.model.Car
 
 class RefurbishedCarzFragment : Fragment() {
 
     private var _binding: FragmentRefurbishedCarzBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var dbHelper: CarDatabaseHelper
+    private lateinit var adapter: RefurbishedCarAdapter
+    private var allCars: List<Car> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,35 +28,67 @@ class RefurbishedCarzFragment : Fragment() {
     ): View {
         _binding = FragmentRefurbishedCarzBinding.inflate(inflater, container, false)
 
-        binding.cardRefurbished1.setOnClickListener {
-            startActivity(Intent(requireContext(), Honda_City::class.java))
-        }
+        dbHelper = CarDatabaseHelper(requireContext())
 
-        binding.cardRefurbished2.setOnClickListener {
-            startActivity(Intent(requireContext(), Maruti_Swift::class.java))
-        }
+        binding.recyclerRefurbishedCars.layoutManager =
+            LinearLayoutManager(requireContext())
 
-        binding.cardRefurbished3.setOnClickListener {
-            startActivity(Intent(requireContext(), Hyundai_I20::class.java))
-        }
-
-        binding.cardRefurbished4.setOnClickListener {
-            startActivity(Intent(requireContext(), Tata_Nexon::class.java))
-        }
-
-        binding.cardRefurbished5.setOnClickListener {
-            startActivity(Intent(requireContext(), Maruti_Baleno::class.java))
-        }
-
-        binding.cardRefurbished6.setOnClickListener {
-            startActivity(Intent(requireContext(), Kia_Sonnet::class.java))
-        }
-
-        binding.cardRefurbished7.setOnClickListener {
-            startActivity(Intent(requireContext(), Toyota_Fortuner::class.java))
-        }
+        loadCars()
+        setupSearch()
 
         return binding.root
+    }
+
+    private fun loadCars() {
+        allCars = dbHelper.getCarsByCategory("Refurbished")
+        adapter = RefurbishedCarAdapter(allCars)
+        binding.recyclerRefurbishedCars.adapter = adapter
+    }
+
+    private fun setupSearch() {
+        binding.searchRefurbished.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString().trim().lowercase()
+
+                if (query.isEmpty()) {
+                    adapter = RefurbishedCarAdapter(allCars)
+                    binding.recyclerRefurbishedCars.adapter = adapter
+                    return
+                }
+
+                val filteredCars = allCars.filter {
+                    it.name.lowercase().contains(query) ||
+                            it.fuelType.lowercase().contains(query) ||
+                            it.transmission.lowercase().contains(query) ||
+                            it.price.lowercase().contains(query)
+                }
+
+                adapter = RefurbishedCarAdapter(filteredCars)
+                binding.recyclerRefurbishedCars.adapter = adapter
+            }
+
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+            }
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadCars()
     }
 
     override fun onDestroyView() {
